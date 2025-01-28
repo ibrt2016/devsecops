@@ -23,7 +23,7 @@ pipeline {
   }
 	  stage('Docker Build and Push') {
       steps {
-        withDockerRegistry('docker-hub',"") {
+        docker.withDockerRegistry('docker-hub',"") {
           sh 'printenv'
           sh 'sudo docker build -t ibrt2021/numeric-app:""$GIT_COMMIT"" .'
           sh 'sudo docker push ibrt2021/numeric-app:""$GIT_COMMIT""'
