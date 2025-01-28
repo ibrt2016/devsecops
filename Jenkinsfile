@@ -10,5 +10,10 @@ pipeline {
         archiveArtifacts 'target/*.jar'
       }
     }
+    stage('Unit Tests') {
+      steps {
+        sh "mvn test"
+      }
+    }
   }
 }
