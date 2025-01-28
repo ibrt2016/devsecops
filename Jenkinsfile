@@ -53,12 +53,12 @@ pipeline {
 
   stages {
 
- //    stage('Build Artifact - Maven') {
- //      steps {
- //        sh "mvn clean package -DskipTests=true"
- //        archive 'target/*.jar'
- //      }
- //    }
+    stage('Build Artifact - Maven') {
+      steps {
+        sh "mvn clean package -DskipTests=true"
+        archive 'target/*.jar'
+      }
+    }
 
  //    stage('Unit Tests - JUnit and JaCoCo') {
  //      steps {
@@ -235,17 +235,17 @@ pipeline {
  //      }
  //    }   
    
-      stage('Testing Slack - 1') {
-      steps {
-          sh 'exit 0'
-      }
-    }
+   //    stage('Testing Slack - 1') {
+   //    steps {
+   //        sh 'exit 0'
+   //    }
+   //  }
 
-   stage('Testing Slack - Error Stage') {
-      steps {
-          sh 'exit 0'
-      }
-    }
+   // stage('Testing Slack - Error Stage') {
+   //    steps {
+   //        sh 'exit 0'
+   //    }
+   //  }
 
   }
 
