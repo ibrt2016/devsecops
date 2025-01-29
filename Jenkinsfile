@@ -21,21 +21,14 @@ pipeline {
 	   }   
       }
   }
-     stage('Docker Build') {
-            steps {
-                script {
-                    dockerImage = docker.build("ibrt2021/numeric-app:${env.$GIT_COMMIT}")
-                }
-            }
+     stage('Docker Build and Push') {
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'docker build -t ibrt2021/numeric-app:""$GIT_COMMIT"" .'
+          sh 'docker push ibrt2021/numeric-app:""$GIT_COMMIT""'
         }
-    stage('Docker Push') {
-            steps {
-                script {
-                    docker.withRegistry('', 'docker-hub') {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
+      }
+    }
 }
 }
